@@ -23,8 +23,47 @@ public class PersonController {
     }
 
     @GetMapping("/person")
-    public ResponseEntity<?> getOrders() {
+    public ResponseEntity<?> getPersons() {
         return new ResponseEntity<>(dataStore.getData(), HttpStatus.OK);
+    }
+
+    @GetMapping("/person/{id}")
+    public ResponseEntity<?> getPersonById(@PathVariable String id) {
+        if (dataStore.getDataByKey(id) == null) {
+            return new ResponseEntity<>(GenericResponse.Make(RC.NOT_FOUND,null),HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok().body(GenericResponse.Make(RC.OK,dataStore.getDataByKey(id)));
+    }
+
+    @PostMapping("/person")
+    public ResponseEntity<?> newPerson(@RequestBody Person person) {
+        GenericResponse response;
+        String id = UUID.randomUUID().toString();
+        
+        person.setPersonId(id);
+        person.setState(Constants.STATE_PENDING);
+        dataStore.addElement(id, person);
+        return ResponseEntity.ok().body(GenericResponse.Make(RC.CREATED,dataStore.getDataByKey(id)));
+    }
+
+    @PutMapping("/person/{id}")
+    public ResponseEntity<?> updatePerson(@PathVariable String id, @RequestBody Order order) {
+        if (dataStore.getDataByKey(id) == null) {
+            return new ResponseEntity<>(GenericResponse.Make(RC.NOT_FOUND,null),HttpStatus.NOT_FOUND);
+        }
+        dataStore.updateElement(id, person);
+        return ResponseEntity.ok().body(GenericResponse.Make(RC.OK,dataStore.getDataByKey(id)));
+    }
+
+    @PatchMapping("/person/{id}")
+    public ResponseEntity<?> changeStatusPerson(@PathVariable String id, @RequestBody GenericRequest request) {
+        if (dataStore.getDataByKey(id) == null) {
+            return ResponseEntity.ok().body(GenericResponse.Make(RC.NOT_FOUND,null));
+        }
+        if (request.getKey().equals(Constants.CHANGE_STATE)) {
+            dataStore.getDataByKey(id).setState((String) request.getData());
+        }
+        return ResponseEntity.ok().body(GenericResponse.Make(RC.OK,dataStore.getDataByKey(id)));
     }
 
 
