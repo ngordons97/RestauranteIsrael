@@ -14,6 +14,21 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "v1")
 public class PersonController {
+    private Storage dataStore = Storage.getInstance();
+    GenericResponse response;
+
+    @GetMapping("")
+    public String hi() {
+        return "HI";
+    }
+
+    @GetMapping("/person")
+    public ResponseEntity<?> getOrders() {
+        return new ResponseEntity<>(dataStore.getData(), HttpStatus.OK);
+    }
+
+
+
     @GetMapping("person")
     public ResponseEntity<?> getPerson() {
         FakeData fakeData = FakeData.getInstance();
