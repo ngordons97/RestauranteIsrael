@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-products" />
+        <module name="uisrael-lib-utils" />
         <module name="api-person" />
+        <module name="api-products" />
         <module name="api-orders" />
       </profile>
       <profile name="Gradle Imported" enabled="true">

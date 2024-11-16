@@ -1,6 +1,7 @@
 package ec.edu.uisrael.apiorders.data;
 
 import com.github.javafaker.Faker;
+import ec.edu.uisrael.constants.Constants;
 
 import java.util.HashMap;
 
@@ -20,7 +21,12 @@ public class Storage {
     private void buildFakeData() {
         Faker faker = new Faker();
         orders = new HashMap<>();
-        for (int x = 0; x < 20; x++) {
+        for (int x = 1; x < 3; x++) {
+            String id= "000000000"+x;
+            orders.put(id,Order.builder()
+                    .orderId(id)
+                    .state(Constants.STATE_PENDING).build()
+            );
         }
     }
 
@@ -35,6 +41,14 @@ public class Storage {
     public Order addElement(String key,Order orden) {
         orders.put(key, orden);
         return orders.get(key);
+    }
+    public Order updateElement(String key,Order orden) {
+        orders.replace(key, orden);
+        return orders.get(key);
+    }
+
+    public void removeElement(String key) {
+        orders.remove(key);
     }
 
 }
