@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'ec.edu.uisrael'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 
 java {
 	toolchain {
@@ -21,11 +21,17 @@ configurations {
 
 repositories {
 	mavenCentral()
+	mavenLocal()
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'ec.edu.uisrael:uisrael-lib-utils:1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
 	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

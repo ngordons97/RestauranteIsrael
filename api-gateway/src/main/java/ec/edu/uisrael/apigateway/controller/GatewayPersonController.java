@@ -1,29 +1,35 @@
 package ec.edu.uisrael.apigateway.controller;
 
 import ec.edu.uisrael.apigateway.service.PersonService;
+import ec.edu.uisrael.dto.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.EntityResponse;
 
 @RestController
-@RequestMapping(path = "/v1")
-public class GatewayController {
+@RequestMapping(path = "/v1/person")
+public class GatewayPersonController {
     @Autowired
     PersonService personService;
 
-    @GetMapping
+    @GetMapping("/hc")
     public ResponseEntity<?> hi(){
         ResponseEntity response = new ResponseEntity<>("HI", HttpStatus.OK);
         return response;
     }
-    @GetMapping("/person")
+
+    @GetMapping
     public ResponseEntity<?> getPerson(){
-//        ResponseEntity person = personService.getPerson();
-//        ResponseEntity response = new ResponseEntity<>(person, HttpStatus.OK);
-        return personService.getPerson();
+        return personService.getAllPerson();
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getPersonById(@PathVariable String id){
+        return personService.getPerson(id);
+    }
+    @PostMapping
+    public ResponseEntity<?> addPerson(@RequestBody Person person){
+        return personService.addPerson(person);
     }
 }

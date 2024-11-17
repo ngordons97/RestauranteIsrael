@@ -1,6 +1,7 @@
 package ec.edu.uisrael.apiperson.data;
 
 import com.github.javafaker.Faker;
+import ec.edu.uisrael.dto.Person;
 
 import java.util.HashMap;
 
@@ -37,5 +38,19 @@ public class FakeData {
 
     public Person getDataByKey(String key) {
         return persons.get(key);
+    }
+
+    public Person addElement(String key,Person person) {
+        persons.put(key, person);
+        return persons.get(key);
+    }
+
+    public Person updateElement(String key,Person person) {
+        persons.replace(key, person);
+        return persons.get(key);
+    }
+
+    public void deleteElement(String key,Person person) {
+        persons.remove(key);
     }
 }

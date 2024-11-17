@@ -1,0 +1,24 @@
+<configuration>
+<!--    <property name="appName" value="api-gateway"/>-->
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}-[%X{requestId}]-[%level]-[${appName}]-%class-%method:%line : %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <filter class="ch.qos.logback.classic.filter.PackageFilter" onMatch="ACCEPT" onMismatch="DENY">
+        <package>ec.edu.uisrael</package>  </filter>
+
+    <logger name="ec.edu.uisrael" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <filter>ref=myPackageFilter</filter>  </logger>
+
+    <filter name="myPackageFilter" class="ch.qos.logback.classic.filter.PackageFilter" onMatch="ACCEPT" onMismatch="DENY">
+        <package>ec.edu.uisrael</package>  </filter>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <filter>ref=myPackageFilter</filter>  </root>
+</configuration>
