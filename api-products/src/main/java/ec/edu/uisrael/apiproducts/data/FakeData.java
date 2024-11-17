@@ -57,6 +57,24 @@ public class FakeData {
         return products;
     }
 
+    public HashMap<String, Product> addData(Product product) {
+        products.put(product.getId(), product);
+        return products;
+    }
+
+    public void removeData(String id) {
+        products.remove(id);
+    }
+
+    public Product updateData(String id,Product product) {
+        products.replace(id, product);
+        return products.get(id);
+    }
+
+    public Product updateDataById(String id,Product product) {
+        products.replace(id, product);
+        return products.get(id);
+    }
     public Product getDataByKey(String key) {
         return products.get(key);
     }

@@ -10,7 +10,6 @@
         <option value="$PROJECT_DIR$/api-person/pom.xml" />
         <option value="$PROJECT_DIR$/api-products/pom.xml" />
         <option value="$PROJECT_DIR$/api-orders/pom.xml" />
-        <option value="$PROJECT_DIR$/lib-utils/pom.xml" />
         <option value="$PROJECT_DIR$/uisrael-lib-utils/pom.xml" />
       </list>
     </option>
