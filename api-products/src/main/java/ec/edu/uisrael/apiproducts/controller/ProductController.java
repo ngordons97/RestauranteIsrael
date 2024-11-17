@@ -62,10 +62,7 @@ public class ProductController {
         if (product.getId() == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        if (product.getName() != null) {
-            product.setName(product.getName());
-        }
-
+        
         fakeData.updateDataById(id, product);
         return new ResponseEntity<>("Producto actualizado correctamente",HttpStatus.OK);
     }
