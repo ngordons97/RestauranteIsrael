@@ -1,23 +1,23 @@
 ## RestauranteIsrael
 
-El proyecto se encargar de procesar ordenes de comida para lo cual se pondran a disposición  
+El proyecto se encarga de procesar ordenes de comida para lo cual se pondra a disposición  
 el siguiente flujo:
 
 1.  **Consulta el cliente**
 2.  **Seleccionar un cliente**
-3.  **Obtener menu**
+3.  **Obtener menú**
 4.  **Seleccionar platillo**
 5.  **Ingresar orden**
 6.  **Entregar orden**
 
 ## Diseño
 
-En este proyecto se aplica una arquitecturas en micriservcicios y api-gateway.  
-se generan 3 proyectos rest api que se encargaran de administrar un solo componente,  
-mientras que un api gateway se encargara de centralizar todas las peticiones y  
+En este proyecto se aplica una arquitectura en **microservicios** y **api-gateway**.  
+Se generan 3 proyectos Rest API que se encargaran de administrar un solo componente,  
+mientras que un api-gateway se encargara de centralizar todas las peticiones y  
 distribuirlas al proyecto correspondiente.
 
-El almacenamiento de información se realiza en memoria con un patron de diseño singleton para el cual cada proyecto autorenera información fake para tener data inicial.
+El almacenamiento de información se realiza en memoria con un patrón de diseño singleton para el cual cada proyecto autogenera información fake para tener data inicial.
 
 **api-person** genera 20 registros fake
 
@@ -27,17 +27,17 @@ El almacenamiento de información se realiza en memoria con un patron de diseño
 
 ## Componentes
 
-| **Componente** | **Description** | Función |
+| **Componente** | **Descripción** | Función |
 | --- | --- | --- |
 | **api-person** | Se encarga de los clientes | Administra los clientes |
-| **api-products** | Se los platillos de comida | Administra el menu (Platillos de comida) |
+| **api-products** | Se encarga de los platillos de comida | Administra el menú (Platillos de comida) |
 | **api-orders** | Se encarga de las ordenes | Administra las ordenes |
-| **uisrael-lib-utils** | Contiene las clases estandar para todos los proyectos |   |
+| **uisrael-lib-utils** | Contiene las clases estándar para todos los proyectos |   |
 | **api-gateway** | Se encarga de centralizar y distribuir las peticiones | Centraliza las peticiones |
 
 ## Levantar microservicios
 
-Descargar los war en un direcctorio
+Descargar los war en un directorio
 
 ```sh
 ┌──(usuario㉿EQUIPO)-[/SEMANA_7/components]
@@ -167,7 +167,7 @@ java -jar api-gateway.jar
 ## **Flujo de prueba**
 
   
-Para este caso de prueba se realiza peticiones vía CURL para que seanaccesibles a todo publico. se deben ejecutar en una terminal de la siguiente manera
+Para este caso de prueba se realiza peticiones vía CURL para que sean accesibles a todo público. se deben ejecutar en una terminal de la siguiente manera.
 
 #### **Obtener persona**
 
@@ -358,7 +358,7 @@ curl --request POST \
 }
 ```
 
-#### Actualizar una orden a entregada
+#### Actualizar el estado una orden a entregada
 
 ```sh
 curl --request PATCH \
