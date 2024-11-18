@@ -39,7 +39,7 @@ El almacenamiento de información se realiza en memoria con un patron de diseño
 
 Descargar los war en un direcctorio
 
-```plaintext
+```sh
 ┌──(usuario㉿EQUIPO)-[/SEMANA_7/components]
 └─$ ll
 total 93924
@@ -53,11 +53,11 @@ Cada aplicativo es un componente jar de springboot cada uno ocupa un puerto
 
 #### API-PERSON
 
-```plaintext
+```sh
 $ java -jar api-person.jar 
 ```
 
-```plaintext
+```sh
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -81,11 +81,11 @@ $ java -jar api-person.jar
 
 #### API-PRODUCTS
 
-```plaintext
+```sh
 java -jar api-products.jar 
 ```
 
-```plaintext
+```sh
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -108,11 +108,11 @@ java -jar api-products.jar
 
 #### API-ORDERS
 
-```plaintext
+```sh
 java -jar api-orders.jar 
 ```
 
-```plaintext
+```sh
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -140,7 +140,7 @@ java -jar api-orders.jar
 
 java -jar api-gateway.jar
 
-```plaintext
+```sh
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -171,13 +171,13 @@ Para este caso de prueba se realiza peticiones vía CURL para que seanaccesibles
 
 #### **Obtener persona**
 
-```plaintext
+```sh
 curl --request GET \
   --url http://localhost:8080/api-gateway/v1/person \
   --header 'User-Agent: insomnia/10.1.1'
 ```
 
-```plaintext
+```json
 {
 	"code": 200,
 	"message": "OK",
@@ -205,13 +205,13 @@ curl --request GET \
 
 #### Seleccionar Persona
 
-```plaintext
+```sh
 curl --request GET \
   --url http://localhost:8080/api-gateway/v1/person/506-85-2953 \
   --header 'User-Agent: insomnia/10.1.1'
 ```
 
-```plaintext
+```json
 {
 	"code": 200,
 	"message": "OK",
@@ -225,13 +225,13 @@ curl --request GET \
 
 #### Obtener Productos
 
-```plaintext
+```sh
 curl --request GET \
   --url http://localhost:8080/api-gateway/v1/product \
   --header 'User-Agent: insomnia/10.1.1'
 ```
 
-```plaintext
+```json
 {
 	"b9ac7533-e454-42cc-9345-5ed6dcc645ae": {
 		"id": "b9ac7533-e454-42cc-9345-5ed6dcc645ae",
@@ -261,13 +261,13 @@ curl --request GET \
 
 #### Seleccionar Producto
 
-```plaintext
+```sh
 curl --request GET \
   --url http://localhost:8080/api-gateway/v1/product/b9ac7533-e454-42cc-9345-5ed6dcc645ae \
   --header 'User-Agent: insomnia/10.1.1'
 ```
 
-```plaintext
+```json
 {
 	"code": 200,
 	"message": "OK",
@@ -283,13 +283,13 @@ curl --request GET \
 
 #### Visualizar Ordenes
 
-```plaintext
+```sh
 curl --request GET \
  --url http://localhost:8080/api-gateway/v1/order \
  --header 'User-Agent: insomnia/10.1.1'
 ```
 
-```plaintext
+```json
 {
 	"code": 200,
 	"message": "OK",
@@ -314,7 +314,7 @@ curl --request GET \
 
 Para ello creamos un request body con un cliente y un platillo existente
 
-```plaintext
+```sh
 curl --request POST \
   --url http://localhost:8080/api-gateway/v1/order \
   --header 'Content-Type: application/json' \
@@ -336,7 +336,7 @@ curl --request POST \
 }'
 ```
 
-```plaintext
+```json
 {
 	"code": 201,
 	"message": "Created",
@@ -360,7 +360,7 @@ curl --request POST \
 
 #### Actualizar una orden a entregada
 
-```plaintext
+```sh
 curl --request PATCH \
   --url http://localhost:8080/api-gateway/v1/order/ec0eb5b2-ec9f-4e01-9fb7-9913578c0a33 \
   --header 'Content-Type: application/json' \
@@ -370,7 +370,7 @@ curl --request PATCH \
 }'
 ```
 
-```plaintext
+```json
 {
 	"code": 200,
 	"message": "OK",
