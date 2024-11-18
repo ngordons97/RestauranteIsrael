@@ -28,7 +28,7 @@ public class OrderController {
 
     @GetMapping("/order")
     public ResponseEntity<?> getOrders() {
-        return new ResponseEntity<>(dataStore.getData(), HttpStatus.OK);
+        return ResponseEntity.ok().body(GenericResponse.Make(RC.OK,dataStore.getData()));
     }
 
     @GetMapping("/order/{id}")

@@ -26,7 +26,8 @@ public class PersonController {
 
     @GetMapping("/person")
     public ResponseEntity<?> getPersons() {
-        return new ResponseEntity<>(dataStore.getData(), HttpStatus.OK);
+
+        return ResponseEntity.ok().body(GenericResponse.Make(RC.OK,dataStore.getData()));
     }
 
     @GetMapping("/person/{id}")
@@ -55,20 +56,11 @@ public class PersonController {
     }
     
     @PatchMapping("/person/{id}")
-    public ResponseEntity<?> changeStatusPerson(@PathVariable String id, @RequestBody GenericRequest request) {
+    public ResponseEntity<?> changeStatusPerson(@PathVariable String id, @RequestBody  Person person) {
         if (dataStore.getDataByKey(id) == null) {
-            return ResponseEntity.ok().body(GenericResponse.Make(RC.NOT_FOUND,null));
+            return new ResponseEntity<>(GenericResponse.Make(RC.NOT_FOUND,null),HttpStatus.NOT_FOUND);
         }
-        if (request.getKey().equals(Constants.CHANGE_STATE)) {
-            dataStore.getDataByKey(id).setState((String) request.getData());
-        }
+        dataStore.updateElement(id, person);
         return ResponseEntity.ok().body(GenericResponse.Make(RC.OK,dataStore.getDataByKey(id)));
-    }
-
-    @GetMapping("person")
-    public ResponseEntity<?> getPerson() {
-        FakeData fakeData = FakeData.getInstance();
-        fakeData.getData();
-        return new ResponseEntity<>(fakeData.getData(), HttpStatus.OK);
     }
 }

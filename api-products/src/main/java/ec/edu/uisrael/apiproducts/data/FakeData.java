@@ -1,6 +1,7 @@
 package ec.edu.uisrael.apiproducts.data;
 
 import com.github.javafaker.Faker;
+import ec.edu.uisrael.dto.Product;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -57,6 +58,10 @@ public class FakeData {
         return products;
     }
 
+    public Product getDataByKey(String key) {
+        return products.get(key);
+    }
+
     public HashMap<String, Product> addData(Product product) {
         products.put(product.getId(), product);
         return products;
@@ -66,16 +71,13 @@ public class FakeData {
         products.remove(id);
     }
 
-    public Product updateData(String id,Product product) {
+    public Product updateData(String id, Product product) {
         products.replace(id, product);
         return products.get(id);
     }
 
-    public Product updateDataById(String id,Product product) {
+    public Product updateDataById(String id, Product product) {
         products.replace(id, product);
         return products.get(id);
-    }
-    public Product getDataByKey(String key) {
-        return products.get(key);
     }
 }

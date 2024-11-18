@@ -36,11 +36,6 @@ public class FakeData {
         return persons;
     }
 
-    public Person addElement(String key,Person person    ) {
-        persons.put(key, person);
-        return persons.get(key);
-    }
-
     public Person getDataByKey(String key) {
         return persons.get(key);
     }

@@ -58,9 +58,15 @@
 			<artifactId>javafaker</artifactId>
 			<version>1.0.2</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>ec.edu.uisrael</groupId>
+            <artifactId>uisrael-lib-utils</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

@@ -9,8 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="uisrael-lib-utils" />
         <module name="api-person" />
-        <module name="api-products" />
         <module name="api-orders" />
+        <module name="api-products" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
